@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <stdbool.h>
+
 typedef struct {
   int* arr;
   int capacity;
@@ -13,23 +15,36 @@ vector* vector_new();
 // destructor - destroy vector and free memory
 void vector_destroy(vector* v);
 
-//// get(i) - returns val at element i with bounds checking
-//int get(Vector* vec, int idx);
-//
-//// set(i, val) - sets val at element i with bounds checking
-//int set(Vector* vec, int idx, int val);
-//
-//// pushback(val) - add an element to end of vector
-//void pushback(Vector* vec, int val);
-//
-//// remove(i) - removes element at i and returns val
-//int remove(Vector* vec, int idx);
-//
-//// size() - returns size of vector
-//int size(Vector* vec);
+// returning size of vector
+int vector_size(vector* v);
+
+// checks bounds of vector
+bool vector_bounds(vector* v, int idx);
+
+// return val for element at idx
+int vector_get(vector* v, int idx);
+
+// push a val onto the back of the vector
+void vector_pushback(vector* v, int val);
+
+// set element at idx to val
+void vector_set(vector* v, int idx, int val);
+
 
 // TEST =======================================================
 
+void run_all_tests();
+
 void test_vector_new();
+
+void test_vector_size();
+
+void test_vector_bounds();
+
+void test_vector_get();
+
+void test_vector_pushback();
+
+void test_vector_set();
 
 #endif // VECTOR_H

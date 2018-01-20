@@ -11,5 +11,5 @@ int main() {
   vector_destroy(my_vector);
   my_vector = NULL;
 
-  test_vector_new();
+  run_all_tests();
 }
