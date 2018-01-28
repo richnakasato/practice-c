@@ -5,46 +5,50 @@
 
 typedef struct {
   int* arr;
-  int capacity;
-  int size;
+  int cap;
+  int sz;
 } vector;
 
-// constructor - create and return a new vector
-vector* vector_new();
+// creates and sets vector, returns operation status
+bool vector_create(vector** vpp);
 
-// destructor - destroy vector and free memory
-void vector_destroy(vector* v);
+// destroys and nulls vector, returns operation status
+bool vector_destroy(vector** vpp);
 
-// returning size of vector
-int vector_size(vector* v);
+// gets size, returns operation status
+bool vector_size(vector* vp, int* szp);
 
-// checks bounds of vector
-bool vector_bounds(vector* v, int idx);
+// gets capacity, returns operation status
+bool vector_capacity(vector* vp, int* capp);
 
-// return val for element at idx
-int vector_get(vector* v, int idx);
+// checks if empty, returns operation status
+bool vector_isempty(vector* vp, bool* isemptyp);
 
-// push a val onto the back of the vector
-void vector_pushback(vector* v, int val);
+// gets val at idx, returns operation status
+bool vector_get(vector* vp, int idx, int* valp);
 
-// set element at idx to val
-void vector_set(vector* v, int idx, int val);
+// sets val at idx, returns operation status
+bool vector_set(vector* v, int idx, int val);
 
+// inserts val at tail, returns operation status
+bool vector_pushback(vector** vpp, int val);
 
-// TEST =======================================================
+// inserts val at head, returns operation status
+//bool vector_pushfront(vector** v, int val);
 
-void run_all_tests();
+// gets val at tail and removes it, returns operation status
+//bool vector_popback(vector** v, int *val);
 
-void test_vector_new();
+// deletes slot at idx (shifting left), returns operation status
+//bool vector_delete(vector** v, int idx);
 
-void test_vector_size();
+// deletes all slots with val (shifting left), return operation status
+//bool vector_remove(vector** v, int val);
 
-void test_vector_bounds();
+// sets capacity of vector to c (truncating if necessary), returns operation status
+bool vector_resize(vector** vpp, int cap);
 
-void test_vector_get();
-
-void test_vector_pushback();
-
-void test_vector_set();
+// prints all elements in the vector to std out
+void vector_print(vector* vp);
 
 #endif // VECTOR_H
